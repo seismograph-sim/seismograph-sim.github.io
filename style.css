@@ -1,0 +1,116 @@
+/* Make the page fill the whole browser window with no margins. */
+html, body {
+  margin: 0;
+  height: 100%;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+/* The map covers the entire window, behind everything else. */
+#map {
+  position: absolute;
+  inset: 0;            /* top:0; right:0; bottom:0; left:0 */
+  z-index: 0;
+}
+
+/* The sidebar sits on top of the map, in the top-left corner. */
+#sidebar {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 1000;        /* above the map */
+  width: 280px;
+  max-height: calc(100% - 32px);
+  overflow-y: auto;     /* scroll if the log gets long */
+  padding: 16px 20px;
+  background: rgba(20, 24, 38, 0.92);
+  color: #f5f7fa;
+  border-radius: 14px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+}
+
+#sidebar h1 {
+  margin: 0 0 8px;
+  font-size: 22px;
+}
+
+#sidebar h2 {
+  margin: 18px 0 8px;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #9fb0c8;
+}
+
+/* The status line. */
+#status {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #cdd7e6;
+  min-height: 20px;
+}
+
+/* Magnitude slider. */
+#mag-label {
+  display: block;
+  margin-top: 14px;
+  font-size: 14px;
+  color: #cdd7e6;
+}
+#mag-value {
+  font-weight: 700;
+  color: #fff;
+}
+#mag {
+  width: 100%;
+  margin: 8px 0 0;
+  accent-color: #e8453c;
+  cursor: pointer;
+}
+
+/* The big quake button. */
+#trigger {
+  margin-top: 14px;
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  background: #e8453c;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+#trigger:hover { background: #f0594f; }
+#trigger:disabled { background: #6b7280; cursor: not-allowed; }
+
+/* The arrivals log list. */
+#log {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+#log li {
+  margin-bottom: 4px;
+  animation: fadein 0.3s ease;
+}
+
+@keyframes fadein {
+  from { opacity: 0; transform: translateX(-6px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* The small text labels Leaflet shows next to each city dot. */
+.city-label {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  text-shadow: 0 0 3px #000, 0 0 3px #000;
+  white-space: nowrap;
+}
